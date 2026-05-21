@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>최우영 고객응대 문자 매뉴얼</title>
+
+<link rel="icon" type="image/png" href="./icon-v2.png?v=2">
+<link rel="shortcut icon" type="image/png" href="./icon-v2.png?v=2">
+
+<link rel="apple-touch-icon"
+      sizes="180x180"
+      href="./icon-v2.png?v=2">
+
+<link rel="manifest" href="./manifest.json?v=2">
+
+<meta name="apple-mobile-web-app-title" content="최우영">
+
+<style>
+  :root{
+    --bg:#f7f4ee;
+    --paper:#fffdf8;
+    --ink:#171411;
+    --muted:#6f665b;
+    --line:#e8dece;
+    --gold:#b88a2e;
+    --gold2:#e0bd66;
+    --black:#15110c;
+    --danger:#c0392b;
+    --green:#177245;
+    --blue:#245c9d;
+    --shadow:0 14px 40px rgba(31,22,10,.12);
+    --radius:22px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:linear-gradient(180deg,#111 0,#2a1e0d 210px,var(--bg) 211px,var(--bg) 100%);
+    color:var(--ink);
+  }
+  .app{max-width:760px;margin:0 auto;padding:18px 14px 110px}
+  .hero{
+    color:#fff;padding:18px 4px 20px;text-align:center;
+  }
+  .brand{
+    width:62px;height:62px;border-radius:50%;margin:0 auto 10px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(224,189,102,.6);
+    background:radial-gradient(circle at 35% 25%,#5d4216,#17110a 70%);
+    color:var(--gold2);font-weight:900;font-size:24px;letter-spacing:-1px;
+    box-shadow:0 0 28px rgba(224,189,102,.38);
+    animation:pulse 2.4s infinite ease-in-out;
+  }
+  @keyframes pulse{0%,100%{box-shadow:0 0 18px rgba(224,189,102,.25)}50%{box-shadow:0 0 38px rgba(224,189,102,.72)}}
+  h1{margin:0;font-size:24px;line-height:1.18;letter-spacing:-.7px}
+  .sub{margin:8px 0 0;color:#e8ddc8;font-size:14px;line-height:1.5}
+  .notice{
+    margin:8px 0 14px;padding:12px 14px;border-radius:18px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(224,189,102,.25);
+    color:#f4ead5;font-size:13px;line-height:1.45;text-align:left;
+  }
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:14px;margin:14px 0;
+  }
+  .sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+  .sectionTitle h2{font-size:18px;margin:0;letter-spacing:-.4px}
+  .hint{font-size:12px;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .catBtn,.itemBtn,.smallBtn,.storeBtn{
+    border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 8px;
+    font-size:14px;font-weight:800;color:var(--ink);cursor:pointer;min-height:50px;
+  }
+  .catBtn.active,.itemBtn.active,.storeBtn.active{
+    background:linear-gradient(135deg,#18120b,#33230d);color:var(--gold2);border-color:#d8b45a;
+  }
+  .catBtn span{display:block;font-size:22px;margin-bottom:2px}
+  .items{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+  .itemBtn{text-align:left;line-height:1.25}
+  .itemBtn small{display:block;color:var(--muted);font-weight:600;margin-top:4px;font-size:11px}
+  .itemBtn.active small{color:#f2dd9a}
+  .storeGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  input,textarea,select{
+    width:100%;border:1px solid var(--line);border-radius:16px;padding:13px 14px;
+    font-size:16px;background:#fff;color:var(--ink);outline:none;
+  }
+  textarea{min-height:120px;resize:vertical;line-height:1.5}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .label{font-size:13px;color:var(--muted);font-weight:800;margin:12px 0 6px}
+  .preview{
+    white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:18px;
+    padding:14px;line-height:1.55;font-size:15px;min-height:120px;
+  }
+  .eduBox{background:#15110c;color:#f9f1dc;border-radius:18px;padding:14px;line-height:1.55;font-size:14px}
+  .eduBox b{color:var(--gold2)}
+  .eduBox ul{margin:8px 0 0;padding-left:20px}
+  .eduBox li{margin:4px 0}
+  .actions{
+    position:fixed;left:0;right:0;bottom:0;background:rgba(255,253,248,.94);backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));z-index:20;
+  }
+  .actionInner{max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .mainBtn{
+    border:none;border-radius:16px;padding:13px 8px;font-size:14px;font-weight:900;cursor:pointer;color:#fff;
+    background:#15110c;box-shadow:0 8px 18px rgba(0,0,0,.15)
+  }
+  .mainBtn.gold{background:linear-gradient(135deg,#9b6c16,#d7ac48);color:#17110a}
+  .mainBtn.blue{background:#245c9d}
+  .toast{
+    position:fixed;left:50%;bottom:86px;transform:translateX(-50%) translateY(20px);opacity:0;
+    background:#15110c;color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;font-weight:800;
+    transition:.22s;z-index:30;pointer-events:none;white-space:nowrap
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .pill{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 9px;font-size:12px;color:var(--muted);font-weight:800}
+  .danger{color:var(--danger)}
+  .divider{height:1px;background:var(--line);margin:12px 0}
+  @media(max-width:430px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .storeGrid{grid-template-columns:repeat(4,1fr)}
+    .items{grid-template-columns:1fr}
+    h1{font-size:22px}.actionInner{grid-template-columns:1fr 1fr 1fr}.mainBtn{font-size:13px;padding:12px 4px}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="hero">
+    <div class="brand">CW</div>
+    <h1>최우영 고객응대<br>문자 매뉴얼</h1>
+    <p class="sub">상황 선택 → 고객문자 복사 → 문자앱 열기 → 직원교육 SOP 연결</p>
+    <div class="notice">고객에게는 짧고 정중하게, 직원에게는 체크 순서가 바로 보이게 구성했습니다.</div>
+  </header>
+
+  <section class="card">
+    <div class="sectionTitle"><h2>🏪 매장 선택</h2><span class="hint">문자 첫 줄에 반영</span></div>
+    <div class="storeGrid" id="storeGrid"></div>
+  </section>
+
+  <section class="card">
+    <div class="sectionTitle"><h2>1. 고객 상황 카테고리</h2><span class="hint">큰 분류</span></div>
+    <div class="grid" id="catGrid"></div>
+  </section>
+
+  <section class="card">
+    <div class="sectionTitle"><h2>2. 세부 상황 선택</h2><span class="hint">바로 복사 가능</span></div>
+    <div class="items" id="itemGrid"></div>
+  </section>
+
+  <section class="card">
+    <div class="sectionTitle"><h2>3. 고객 정보 입력</h2><span class="hint">선택 입력</span></div>
+    <div class="row">
+      <div><div class="label">고객 성함</div><input id="customerName" placeholder="예: 김고객" /></div>
+      <div><div class="label">연락처</div><input id="phone" placeholder="예: 01012345678" inputmode="tel" /></div>
+    </div>
+    <div class="label">주문내역 / 특이사항</div>
+    <input id="orderInfo" placeholder="예: 연어초밥 2, 사시미 1 / 미결제" />
+    <div class="label">직원 전달 메모</div>
+    <input id="staffMemo" placeholder="예: 도착 시 성함·연락처 확인 후 결제 먼저" />
+  </section>
+
+  <section class="card">
+    <div class="sectionTitle"><h2>4. 고객 발송 문자</h2><span class="pill" id="selectedLabel">선택 대기</span></div>
+    <div class="preview" id="customerPreview"></div>
+    <div class="row">
+      <button class="smallBtn" onclick="copyCustomer()">📋 고객문자 복사</button>
+      <button class="smallBtn" onclick="openSms()">📩 문자앱 열기</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="sectionTitle"><h2>5. 직원 전달 문구</h2><span class="hint">단톡방/카톡 복사용</span></div>
+    <div class="preview" id="staffPreview"></div>
+    <div class="row">
+      <button class="smallBtn" onclick="copyStaff()">📋 직원문구 복사</button>
+      <button class="smallBtn" onclick="copyBoth()">📦 전체 복사</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="sectionTitle"><h2>6. 연결 직원교육 SOP</h2><span class="hint">문제→원인→개선</span></div>
+    <div class="eduBox" id="eduBox"></div>
+  </section>
+</div>
+
+<div class="actions">
+  <div class="actionInner">
+    <button class="mainBtn gold" onclick="copyCustomer()">고객 복사</button>
+    <button class="mainBtn blue" onclick="openSms()">문자 열기</button>
+    <button class="mainBtn" onclick="copyStaff()">직원 복사</button>
+  </div>
+</div>
+<div class="toast" id="toast">복사 완료</div>
+
+<script>
+const stores=['최우영','최우영수산','최우영스시','최우영스시야','최우영고기야','구로점','영등포점','여의도점'];
+const DATA={
+  delay:{emoji:'⏰',name:'대기/지연',edu:'지연 응대는 먼저 사과하고, 예상 시간을 짧게 안내합니다. 고객을 방치하지 않는 것이 핵심입니다.',items:[
+    {t:'조리 지연',s:'주문량 증가로 조리가 조금 지연되고 있습니다. 최대한 빠르게 준비하겠습니다. 기다려주셔서 감사합니다.',staff:'조리 지연 고객입니다. 주문내역 확인 후 예상시간 안내 부탁드립니다.',checks:['10분 이상 지연 시 먼저 안내','주방 진행상황 확인','고객에게 변명하지 않기','완료 후 전달 체크']},
+    {t:'배달기사 미배정',s:'음식은 준비되었으나 배달기사 배정이 지연되고 있습니다. 배정되는 즉시 출발될 예정입니다.',staff:'배달기사 미배정 건입니다. 음식 보관상태 확인하고 기사 배정 즉시 전달해주세요.',checks:['배달앱 기사상태 확인','음식 온도/선도 확인','장시간 지연 시 관리자 보고','고객에게 상황 안내']},
+    {t:'대기 사과',s:'기다리시게 해드려 죄송합니다. 현재 주문 확인 후 빠르게 준비 중입니다.',staff:'대기 고객 응대 필요. 먼저 사과 후 주문 확인해주세요.',checks:['첫 멘트는 사과','주문번호/성함 확인','기다림 방치 금지','표정과 말투 부드럽게']}
+  ]},
+  service:{emoji:'😥',name:'응대 불편',edu:'응대 문제는 감정 대응 금지, 먼저 공감하고 다시 같은 일이 반복되지 않게 교육으로 연결합니다.',items:[
+    {t:'직원 응대 실수',s:'이용 과정에서 불편을 드리게 되어 죄송합니다. 해당 내용은 매장에서 확인 후 직원 교육 및 운영 개선에 반영하겠습니다.',staff:'직원 응대 불편 건입니다. 상황 확인 후 관리자에게 전달하고 같은 응대 반복되지 않게 공유해주세요.',checks:['고객 말 끊지 않기','변명보다 사과 먼저','해당 직원에게 사실 확인','교육 내용 기록']},
+    {t:'말투 불편',s:'응대 과정에서 불편함을 느끼시게 해드려 죄송합니다. 고객님 말씀 확인 후 다시 같은 일이 반복되지 않도록 하겠습니다.',staff:'말투 불편 클레임입니다. 응대 멘트와 표정 다시 점검해주세요.',checks:['목소리 톤 낮추기','짧고 정중하게 답변','감정 섞인 표현 금지','관리자 보고']},
+    {t:'설명 부족',s:'안내 및 설명이 부족했던 점 죄송합니다. 보다 정확하고 친절하게 응대할 수 있도록 개선하겠습니다.',staff:'설명 부족 건입니다. 고객에게 필요한 안내가 누락되지 않았는지 확인해주세요.',checks:['주문/결제/대기 설명 기준화','고객 질문 재확인','모르면 관리자에게 연결','추측 안내 금지']}
+  ]},
+  pay:{emoji:'💳',name:'결제/환불',edu:'결제 문제는 정확성이 우선입니다. 취소 완료 여부, 부분취소 여부, 카드사 반영 시간을 구분해서 안내합니다.',items:[
+    {t:'카드 취소 완료',s:'요청하신 카드 승인 취소 처리 완료되었습니다. 카드사 및 결제사 사정에 따라 실제 취소 반영까지 영업일 기준 3~7일 정도 소요될 수 있습니다. 감사합니다.',staff:'카드 승인 취소 완료 건입니다. 취소 영수증/처리내역 확인 후 고객 안내해주세요.',checks:['승인취소 완료 확인','부분/전체 취소 구분','영업일 3~7일 안내','영수증 보관']},
+    {t:'부분 취소',s:'요청하신 금액 부분 취소 처리 완료되었습니다. 카드사 반영까지 다소 시간이 소요될 수 있습니다.',staff:'부분 취소 건입니다. 취소 금액과 결제금액 반드시 재확인해주세요.',checks:['취소 금액 확인','원결제 금액 확인','고객에게 부분취소 명확히 안내','관리자 확인']},
+    {t:'이중결제',s:'중복 결제 확인되어 카드 승인 취소 처리 완료되었습니다. 불편을 드려 죄송합니다.',staff:'이중결제 확인 건입니다. 중복 승인내역 확인 후 한 건 취소 처리해주세요.',checks:['승인번호 2개 확인','취소할 결제 선택','취소 완료 후 안내','재발 방지 공유']}
+  ]},
+  pickup:{emoji:'📦',name:'포장/내방',edu:'포장 내방은 성함·연락처·주문내역·미결제 여부 확인이 핵심입니다. 동명이인과 미결제 누락을 막아야 합니다.',items:[
+    {t:'내방포장 확인',s:'포장 주문 확인되었습니다. 방문 시 성함 또는 연락처 확인 후 포장 전달 도와드리겠습니다.',staff:'포장 내방 고객입니다. 성함 또는 연락처 확인 후 주문내역 체크 부탁드립니다. 미결제 건은 결제 먼저 진행해주세요.',checks:['성함 확인','연락처 확인','주문내역 확인','미결제 여부 확인','결제 후 전달']},
+    {t:'미결제 안내',s:'해당 주문은 미결제 상태입니다. 방문 시 결제 후 포장 전달 도와드리겠습니다.',staff:'미결제 포장 건입니다. 고객 도착 시 결제 먼저 받고 포장 전달해주세요.',checks:['결제 여부 POS 확인','결제 먼저 진행','영수증 확인','전달 완료 체크']},
+    {t:'포장 완료',s:'주문하신 포장이 준비되었습니다. 방문 시 성함 또는 연락처 확인 후 전달드리겠습니다.',staff:'포장 완료 건입니다. 고객 성함 또는 연락처 확인 후 전달 부탁드립니다.',checks:['포장 실물 확인','영수증 확인','구성품 최종확인','고객 확인 후 전달']}
+  ]},
+  claim:{emoji:'🚨',name:'클레임',edu:'클레임은 인정·확인·보고 순서입니다. 판단을 서두르지 말고 사진/주문내역/시간을 함께 확인합니다.',items:[
+    {t:'음식 품질 불편',s:'이용에 만족을 드리지 못해 죄송합니다. 남겨주신 내용은 매장에서 확인 후 품질 개선에 반영하겠습니다.',staff:'음식 품질 클레임입니다. 주문내역, 제조시간, 사진 여부 확인 후 관리자에게 보고해주세요.',checks:['먼저 사과','주문내역 확인','사진/상태 확인','제조자/시간 확인','관리자 보고']},
+    {t:'구성품 누락',s:'구성품 누락으로 불편을 드려 죄송합니다. 해당 내용 확인 후 빠르게 처리 도와드리겠습니다.',staff:'구성품 누락 건입니다. 영수증과 포장 체크리스트 확인 후 처리 방법 관리자에게 확인해주세요.',checks:['누락 품목 확인','영수증 확인','포장 담당자 확인','재발 방지 체크표 반영']},
+    {t:'강한 사과',s:'불편을 드려 진심으로 죄송합니다. 해당 내용은 매장에서 중요하게 확인하고 같은 문제가 반복되지 않도록 개선하겠습니다.',staff:'중요 클레임입니다. 즉시 관리자에게 공유하고 고객 응대는 정중하게 진행해주세요.',checks:['직원 단독 판단 금지','관리자 즉시 보고','감정 대응 금지','처리 결과 기록']}
+  ]},
+  review:{emoji:'📱',name:'리뷰',edu:'리뷰는 매장의 공개 기록입니다. 감사 리뷰는 재방문으로 연결하고, 불만 리뷰는 감정 없이 개선 약속으로 대응합니다.',items:[
+    {t:'리뷰 감사',s:'소중한 리뷰 남겨주셔서 진심으로 감사합니다. 앞으로도 만족하실 수 있도록 정성껏 준비하겠습니다.',staff:'좋은 리뷰 확인되었습니다. 해당 메뉴/직원 칭찬 내용 공유해주세요.',checks:['좋은 리뷰 공유','칭찬 직원 격려','잘된 기준 기록','반복 유지']},
+    {t:'불만 리뷰',s:'이용에 만족을 드리지 못해 죄송합니다. 남겨주신 내용은 매장 운영에 반영하여 개선하겠습니다.',staff:'불만 리뷰 확인 건입니다. 내용 캡처 후 원인 확인하고 개선 항목으로 기록해주세요.',checks:['감정 댓글 금지','내용 캡처','원인 분류','개선 기록']},
+    {t:'재방문 감사',s:'다시 찾아주셔서 감사합니다. 이번 주문도 정성껏 준비하겠습니다.',staff:'재방문 고객입니다. 주문 실수 없도록 최종 확인 부탁드립니다.',checks:['재방문 고객 인지','구성품 재확인','감사 인사','완료 체크']}
+  ]}
+};
+let currentStore='최우영', currentCat='pickup', currentIndex=0;
+const $=id=>document.getElementById(id);
+function renderStores(){ $('storeGrid').innerHTML=stores.map(s=>`<button class="storeBtn ${s===currentStore?'active':''}" onclick="setStore('${s}')">${s}</button>`).join(''); }
+function renderCats(){ $('catGrid').innerHTML=Object.keys(DATA).map(k=>`<button class="catBtn ${k===currentCat?'active':''}" onclick="setCat('${k}')"><span>${DATA[k].emoji}</span>${DATA[k].name}</button>`).join(''); }
+function renderItems(){ const cat=DATA[currentCat]; $('itemGrid').innerHTML=cat.items.map((it,i)=>`<button class="itemBtn ${i===currentIndex?'active':''}" onclick="setItem(${i})">${it.t}<small>${cat.name}</small></button>`).join(''); }
+function setStore(s){currentStore=s;renderStores();update();}
+function setCat(k){currentCat=k;currentIndex=0;renderCats();renderItems();update();}
+function setItem(i){currentIndex=i;renderItems();update();}
+function selected(){return DATA[currentCat].items[currentIndex];}
+function customerText(){
+  const it=selected(), name=$('customerName').value.trim(), order=$('orderInfo').value.trim();
+  let lines=[`안녕하세요. ${currentStore}입니다.`];
+  if(name) lines.push(`${name} 고객님,`);
+  lines.push(it.s);
+  if(order) lines.push(`\n주문내역: ${order}`);
+  return lines.join('\n');
+}
+function staffText(){
+  const it=selected(), name=$('customerName').value.trim(), phone=$('phone').value.trim(), order=$('orderInfo').value.trim(), memo=$('staffMemo').value.trim();
+  let lines=[`[${DATA[currentCat].emoji} ${DATA[currentCat].name} / ${it.t}]`, it.staff];
+  if(name) lines.push(`성함: ${name}`);
+  if(phone) lines.push(`연락처: ${phone}`);
+  if(order) lines.push(`주문내역: ${order}`);
+  if(memo) lines.push(`메모: ${memo}`);
+  lines.push('\n처리 후 완료 체크 부탁드립니다.');
+  return lines.join('\n');
+}
+function update(){
+  const it=selected();
+  $('selectedLabel').textContent=`${DATA[currentCat].name} · ${it.t}`;
+  $('customerPreview').textContent=customerText();
+  $('staffPreview').textContent=staffText();
+  $('eduBox').innerHTML=`<b>${DATA[currentCat].emoji} ${DATA[currentCat].name} 교육 기준</b><br>${DATA[currentCat].edu}<div class="divider"></div><b>체크 SOP</b><ul>${it.checks.map(c=>`<li>${c}</li>`).join('')}</ul>`;
+}
+async function copyText(txt,msg='복사 완료'){
+  try{ await navigator.clipboard.writeText(txt); showToast(msg); vibrate(25); }
+  catch(e){ fallbackCopy(txt); showToast(msg); }
+}
+function fallbackCopy(txt){ const ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+function copyCustomer(){ copyText(customerText(),'고객 문자 복사 완료'); }
+function copyStaff(){ copyText(staffText(),'직원 전달문구 복사 완료'); }
+function copyBoth(){ copyText(`고객문자\n━━━━━━━━━━━━\n${customerText()}\n\n직원전달\n━━━━━━━━━━━━\n${staffText()}`,'전체 복사 완료'); }
+function openSms(){
+  const phone=$('phone').value.replace(/[^0-9+]/g,'');
+  const body=encodeURIComponent(customerText());
+  const url=phone?`sms:${phone}?body=${body}`:`sms:?body=${body}`;
+  location.href=url;
+}
+function showToast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1500); }
+function vibrate(ms){ if(navigator.vibrate) navigator.vibrate(ms); }
+['customerName','phone','orderInfo','staffMemo'].forEach(id=>$(id).addEventListener('input',update));
+renderStores();renderCats();renderItems();update();
+</script>
+</body>
+</html>
